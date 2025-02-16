@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Registrace service workeru pro offline funkcionalitu
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('/planovac-sluzeb-v2/service-worker.js')
             .then(registration => {
                 console.log('Service Worker registrován');
             })
