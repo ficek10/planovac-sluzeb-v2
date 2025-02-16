@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plánovač služeb</title>
+    
+    <!-- PWA meta tagy -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Plánovač služeb">
+    
+    <!-- Ikony -->
+    <link rel="apple-touch-icon" href="icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Styly -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Hlavní navigace -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="px-4 py-3">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-semibold">Plánovač služeb</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hlavní obsah -->
+    <main class="pt-16 pb-20">
+        <!-- Výběr měsíce a roku -->
+        <div class="px-4 py-2 bg-white shadow-sm">
+            <div class="flex space-x-2">
+                <select id="monthSelect" class="flex-1 p-2 rounded border"></select>
+                <select id="yearSelect" class="w-24 p-2 rounded border"></select>
+            </div>
+        </div>
+
+        <!-- Tabulka služeb -->
+        <div class="overflow-x-auto">
+            <table id="shiftTable" class="w-full bg-white">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Statistiky -->
+        <div id="stats" class="mt-4 p-4 hidden">
+            <!-- Statistiky budou generovány JavaScriptem -->
+        </div>
+    </main>
+
+    <!-- Spodní navigace -->
+    <nav class="bg-white shadow-lg fixed bottom-0 w-full">
+        <div class="flex justify-around py-2">
+            <button onclick="validateShifts()" class="flex flex-col items-center">
+                <span>Kontrola</span>
+            </button>
+            <button onclick="ShiftManager.updateStats()" class="flex flex-col items-center">
+                <span>Statistiky</span>
+            </button>
+            <button onclick="exportToWord()" class="flex flex-col items-center">
+                <span>Export</span>
+            </button>
+            <button onclick="clearCurrentMonthShifts()" class="flex flex-col items-center text-red-500">
+                <span>Vymazat</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Skripty -->
+    <script src="modules/storage.js"></script>
+    <script src="modules/employees.js"></script>
+    <script src="modules/shifts.js"></script>
+    <script src="modules/rules.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
